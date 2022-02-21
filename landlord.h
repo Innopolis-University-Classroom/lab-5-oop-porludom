@@ -23,9 +23,14 @@ private:
     int aptNumber;  // tenant’s apartment number
     // other tenant information (phone, etc.) could go here
 public:
-    tenant(string n, int aNo);
+    tenant(string n, int aNo){
+        name = n;
+        aptNumber = aNo;
+    }
     ~tenant();
-    int getAptNumber();
+    int getAptNumber(){
+        return aptNumber;
+    }
     // needed for use in ‘set’
     friend bool operator < (const tenant&, const tenant&);
     friend bool operator == (const tenant&, const tenant&);
