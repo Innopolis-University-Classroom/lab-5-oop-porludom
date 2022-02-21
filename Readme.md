@@ -1,3 +1,8 @@
+done by
+voronov roman
+piniagin maksim
+7 grpup
+
 Hello Readme
 Using OOP principles, create a program that will allow a landlord to manage an apartment building with 12 units. Two broad features include reading od data and reports for finance. The program should allow the following features;
 
