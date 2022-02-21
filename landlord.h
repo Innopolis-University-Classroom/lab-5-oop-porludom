@@ -6,6 +6,7 @@
 #define LANDLORDPROJECT_LANDLORD_H
 #define landlord_h
 #include <iostream>
+#include <utility>
 #include <vector>
 #include <set>
 #include <string>
@@ -24,7 +25,7 @@ private:
     // other tenant information (phone, etc.) could go here
 public:
     tenant(string n, int aNo){
-        name = n;
+        name = std::move(n);
         aptNumber = aNo;
     }
     ~tenant();
@@ -52,9 +53,16 @@ private:
     set<tenant*, compareTenants>::iterator iter;
 public:
     ~tenantList();               // destructor (deletes tenants)
-    void insertTenant(tenant*);  // put tenant on list
-    int getAptNo(string);        // return apartment number
-    void display();              // display tenant list
+    void insertTenant(tenant* a){
+
+    }  // put tenant on list
+    int getAptNo(string str);        // return apartment number
+    void display(){
+        compareTenants ten;
+        for(iter = setPtrsTens.begin(); iter!=setPtrsTens.end(); iter++){
+            //  todo
+        }
+    }              // display tenant list
 };  // end class tenantList
 /////////////////////class tenantInputScreen////////////////////
 class tenantInputScreen
@@ -76,9 +84,17 @@ private:
     int aptNo;
     float rent[12];
 public:
-    rentRow(int);
-    void setRent(int, float);
-    float getSumOfRow();
+    rentRow(int a){
+        aptNo = a;
+    }
+    void setRent(int a, float b){
+        rent[a] = b;
+    }
+    float getSumOfRow(){
+        float sum = 0;
+        for(float value : rent) sum +=value;
+        return sum;
+    }
     // needed to store in ‘set’
     friend bool operator < (const rentRow&, const rentRow&);
     friend bool operator == (const rentRow&, const rentRow&);
